@@ -49,6 +49,7 @@ alias install='sudo pacman -S'
 alias remove='sudo pacman -Rns'
 alias search='pacman -Ss'
 alias update='packer -Syu'
+alias remove_unused='sudo pacman -Rns $(pacman -Qqtd)' # See: http://bbs.archbang.org/viewtopic.php?pid=13120#p13120
 alias searchlocal='pacman -Qs'
 alias aurupdate='packer -Syu --auronly --noedit --noconfirm'
 alias aurinstall='packer -S'
