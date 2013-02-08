@@ -21,6 +21,8 @@ fi
 
 # Global environment definitions
 # ------------------------------
+export WORKON_HOME=~/.virtualenvs    # See: https://wiki.archlinux.org/index.php/Python_VirtualEnv#Virtualenvwrapper
+source /usr/bin/virtualenvwrapper.sh #
 export PYMACS_PYTHON=python2
 export HISTCONTROL=ignoredups # don't put duplicate lines in the history
 export HISTCONTROL=ignoreboth # ignore same sucessive entries.
@@ -36,8 +38,8 @@ shopt -s extglob      # Allows basic regexps in bash.
 shopt -s checkwinsize # update the values of lines and columns.
 set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
 
-# export vim as our editor
-export EDITOR='vim'
+# back to emacs :)
+export EDITOR='emacs'
 
 
 # Aliases
@@ -192,7 +194,7 @@ BCYAN='\e[1;36m'        # Cyan
 BWHITE='\e[1;37m'       # White
 
 # My old command prompt
-#PS1="\[$RED\]\u\[$GREEN\]@\[$YELLOW\]\h \[$BBLUE\]\w \[$RED\]$ \[$COLOR_RESET\]"
+PS1="\[$RED\]\u\[$GREEN\]@\[$YELLOW\]\h \[$BBLUE\]\w \[$RED\]$ \[$COLOR_RESET\]"
 
-PS1="\[$WHITE\]┌─[\[$BLUE\]\u\[$WHITE\]][\[$GREEN\]\h\[$WHITE\]][\[$PURPLE\]\w\[$WHITE\]]\[$CYAN\]\$(parse_git_branch)\n\[$WHITE\]└──╼ \[$COLOR_RESET"
-PS2="╾──╼ "
+#PS1="\[$WHITE\]┌─[\[$BLUE\]\u\[$WHITE\]][\[$GREEN\]\h\[$WHITE\]][\[$PURPLE\]\w\[$WHITE\]]\[$CYAN\]\$(parse_git_branch)\n\[$WHITE\]└──╼ \[$COLOR_RESET"
+#PS2="╾──╼ "
