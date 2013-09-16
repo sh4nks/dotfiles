@@ -1,0 +1,21 @@
+[submodule "site-lisp/auto-complete"]
+	path = site-lisp/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "site-lisp/emacs-color-theme-solarized"]
+	path = site-lisp/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "site-lisp/flymake-python"]
+	path = site-lisp/flymake-python
+	url = https://github.com/huseyinyilmaz/flymake-python.git
+[submodule "site-lisp/paredit"]
+	path = site-lisp/paredit
+	url = https://github.com/emacsmirror/paredit.git
+[submodule "site-lisp/slime"]
+	path = site-lisp/slime
+	url = https://github.com/emacsmirror/slime.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "site-lisp/pkgbuild-mode"]
+	path = site-lisp/pkgbuild-mode
+	url = https://github.com/juergenhoetzel/pkgbuild-mode.git

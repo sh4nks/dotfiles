@@ -7,6 +7,10 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+if [ -f /usr/local/git/contrib/completion ]; then
+  . /usr/local/git/contrib/completion/git-completion.bash
+fi
+
 # sudo completion
 complete -cf sudo
 
@@ -22,7 +26,8 @@ fi
 # Global environment definitions
 # ------------------------------
 export WORKON_HOME=~/.virtualenvs    # See: https://wiki.archlinux.org/index.php/Python_VirtualEnv#Virtualenvwrapper
-source /usr/bin/virtualenvwrapper.sh #
+source /usr/bin/virtualenvwrapper.sh
+VIRTUAL_ENV_DISABLE_PROMPT=1 # don't let virtualenv show prompts by itself
 export PYMACS_PYTHON=python2
 export HISTCONTROL=ignoredups # don't put duplicate lines in the history
 export HISTCONTROL=ignoreboth # ignore same sucessive entries.
@@ -71,6 +76,8 @@ alias clr='clear;echo "Currently logged in on $(tty), as $(whoami) in directory 
 alias tarc='tar -pczf'
 alias tare='extract'
 
+alias bitch,='sudo' # for the lulz
+
 alias nano='vim' # In school we have to use vi ^^
 alias ec='emacsclient -c -n -a nano'
 alias et='emacsclient -t -a nano'
@@ -83,9 +90,9 @@ fi
 
 
 # These functions make my life easier :)
-extract () {
+function extract () {
     if [ -f $1 ] ; then
-case $1 in
+	case $1 in
             *.tar.bz2) tar xvjf $1;;
             *.tar.gz) tar xvzf $1;;
             *.bz2) bunzip2 $1;;
@@ -99,12 +106,12 @@ case $1 in
             *.7z) 7za x $1;;
             *) echo "'$1' cannot be extracted via >extract<" ;;
         esac
-else
-echo "'$1' is not a valid file"
+    else
+	echo "'$1' is not a valid file"
     fi
 }
 
-exip () {
+function exip () {
     echo -n "Current External IP: "
     curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/<b>IP Address:<\/b> <span class="ha4">//g' -e 's/<\/span><br \/><br \/>//g'
 }
@@ -117,6 +124,11 @@ function psgrep () {
 function mkcd () {
   mkdir -p "$1"
   cd "$1"
+}
+
+# Useful command for stripping whitespace
+function remove_trailing_whitespace() {
+  find . -name $* -exec sed -i '' -e's/[[:space:]]*$//' {} \;
 }
 
 function parse_git_branch {
@@ -194,7 +206,7 @@ BCYAN='\e[1;36m'        # Cyan
 BWHITE='\e[1;37m'       # White
 
 # My old command prompt
-PS1="\[$RED\]\u\[$GREEN\]@\[$YELLOW\]\h \[$BBLUE\]\w \[$RED\]$ \[$COLOR_RESET\]"
+#PS1="\[$RED\]\u\[$GREEN\]@\[$YELLOW\]\h \[$BBLUE\]\w \[$RED\]$ \[$COLOR_RESET\]"
 
-#PS1="\[$WHITE\]┌─[\[$BLUE\]\u\[$WHITE\]][\[$GREEN\]\h\[$WHITE\]][\[$PURPLE\]\w\[$WHITE\]]\[$CYAN\]\$(parse_git_branch)\n\[$WHITE\]└──╼ \[$COLOR_RESET"
-#PS2="╾──╼ "
+PS1="\[$WHITE\]┌─[\[$BLUE\]\u\[$WHITE\]][\[$GREEN\]\h\[$WHITE\]][\[$PURPLE\]\w\[$WHITE\]]\[$CYAN\]\$(parse_git_branch)\n\[$WHITE\]└──╼ \[$COLOR_RESET"
+PS2="╾──╼ "

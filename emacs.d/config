@@ -1,0 +1,32 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[submodule "site-lisp/autocomplete"]
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "site-lisp/emacs-color-theme-solarized"]
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "site-lisp/flymake-python"]
+	url = https://github.com/huseyinyilmaz/flymake-python.git
+[submodule "site-lisp/js2-mode"]
+	url = https://github.com/mooz/js2-mode.git
+[submodule "site-lisp/nxhtml"]
+	url = https://github.com/emacsmirror/nxhtml.git
+[submodule "site-lisp/paredit"]
+	url = git://github.com/emacsmirror/paredit.git
+[submodule "site-lisp/slime"]
+	url = https://github.com/emacsmirror/slime.git
+[submodule "site-lisp/yasnippet"]
+	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "site-lisp/pkgbuild-mode"]
+	url = git://github.com/juergenhoetzel/pkgbuild-mode.git
+[user]
+	name = sh4nks
+	email = sh4nks7@gmail.com
+[remote "origin"]
+	url = https://github.com/sh4nks/emacs.d.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

@@ -1,0 +1,105 @@
+[submodule "vim/bundle/ack.vim"]
+	path = vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/bundle/css.vim"]
+	path = vim/bundle/css.vim
+	url = https://github.com/JulesWang/css.vim
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "vim/bundle/vim-cython"]
+	path = vim/bundle/vim-cython
+	url = https://github.com/tshirtman/vim-cython
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/vim-git"]
+	path = vim/bundle/vim-git
+	url = https://github.com/tpope/vim-git
+[submodule "vim/bundle/vim-glsl"]
+	path = vim/bundle/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl
+[submodule "vim/bundle/go.vim"]
+	path = vim/bundle/go.vim
+	url = https://github.com/fsouza/go.vim
+[submodule "vim/bundle/gundo.vim"]
+	path = vim/bundle/gundo.vim
+	url = https://github.com/sjl/gundo.vim
+[submodule "vim/bundle/html5.vim"]
+	path = vim/bundle/html5.vim
+	url = https://github.com/othree/html5.vim
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "vim/bundle/vim-jinja"]
+	path = vim/bundle/vim-jinja
+	url = https://github.com/mitsuhiko/vim-jinja
+[submodule "vim/bundle/vim-jsbeautify"]
+	path = vim/bundle/vim-jsbeautify
+	url = https://github.com/maksimr/vim-jsbeautify.git
+[submodule "vim/bundle/kwbdi.vim"]
+	path = vim/bundle/kwbdi.vim
+	url = https://github.com/vim-scripts/kwbdi.vim
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/py_jump.vim"]
+	path = vim/bundle/py_jump.vim
+	url = https://github.com/vim-scripts/py_jump.vim
+[submodule "vim/bundle/vim-python-combined"]
+	path = vim/bundle/vim-python-combined
+	url = https://github.com/mitsuhiko/vim-python-combined
+[submodule "vim/bundle/vim-repeat"]
+	path = vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "vim/bundle/vim-rst"]
+	path = vim/bundle/vim-rst
+	url = https://github.com/mitsuhiko/vim-rst
+[submodule "vim/bundle/vim-ruby"]
+	path = vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby
+[submodule "vim/bundle/rust.vim"]
+	path = vim/bundle/rust.vim
+	url = https://github.com/wting/rust.vim.git
+[submodule "vim/bundle/vim-sparkup"]
+	path = vim/bundle/vim-sparkup
+	url = https://github.com/mitsuhiko/vim-sparkup
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "vim/bundle/fruity-vim-colorscheme"]
+	path = vim/bundle/fruity-vim-colorscheme
+	url = https://github.com/mitsuhiko/fruity-vim-colorscheme
+[submodule "emacs.d/site-lisp/auto-complete"]
+	path = emacs.d/site-lisp/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "emacs.d/site-lisp/emacs-color-theme-solarized"]
+	path = emacs.d/site-lisp/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "emacs.d/site-lisp/flymake-python"]
+	path = emacs.d/site-lisp/flymake-python
+	url = https://github.com/huseyinyilmaz/flymake-python.git
+[submodule "emacs.d/site-lisp/paredit"]
+	path = emacs.d/site-lisp/paredit
+	url = https://github.com/emacsmirror/paredit.git
+[submodule "emacs.d/site-lisp/pkgbuild-mode"]
+	path = emacs.d/site-lisp/pkgbuild-mode
+	url = https://github.com/juergenhoetzel/pkgbuild-mode.git
+[submodule "emacs.d/site-lisp/slime"]
+	path = emacs.d/site-lisp/slime
+	url = https://github.com/emacsmirror/slime.git
+[submodule "emacs.d/site-lisp/yasnippet"]
+	path = emacs.d/site-lisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
