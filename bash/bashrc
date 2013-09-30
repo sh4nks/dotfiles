@@ -91,8 +91,8 @@ fi
 
 # These functions make my life easier :)
 function extract () {
-    if [ -f $1 ] ; then
-	case $1 in
+    if [ -f $1 ]; then
+        case $1 in
             *.tar.bz2) tar xvjf $1;;
             *.tar.gz) tar xvzf $1;;
             *.bz2) bunzip2 $1;;
@@ -117,11 +117,11 @@ function exip () {
 }
 
 
-function psgrep () {
+function psgrep() {
   ps aux | grep "$1" | grep -v "grep"
 }
 
-function mkcd () {
+function mkcd() {
   mkdir -p "$1"
   cd "$1"
 }
@@ -129,6 +129,14 @@ function mkcd () {
 # Useful command for stripping whitespace
 function remove_trailing_whitespace() {
   find . -name $* -exec sed -i '' -e's/[[:space:]]*$//' {} \;
+}
+
+# Userful for replacing tabs with spaces
+# $1 --> file ending. for example: `convert_tabs_to_spaces .py`
+# this will convert all taps to spaces from all *.py files recursively
+# in the directory
+function convert_tabs_to_spaces() {
+    find . ! -type d ! -name _tmp_ -iname "*$1" -type f -exec sh -c 'expand -t 4 {} > _tmp_ && mv _tmp_ {}' \;
 }
 
 function parse_git_branch {
