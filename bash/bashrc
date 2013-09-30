@@ -78,7 +78,7 @@ alias tare='extract'
 
 alias bitch,='sudo' # for the lulz
 
-alias nano='vim' # In school we have to use vi ^^
+alias nano='vim' # In university we have to use vi ^^
 alias ec='emacsclient -c -n -a nano'
 alias et='emacsclient -t -a nano'
 
