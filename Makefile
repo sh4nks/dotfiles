@@ -14,6 +14,12 @@ install-bash:
 	rm -f ~/.bashrc
 	ln -s `pwd`/bash/bashrc ~/.bashrc
 
+install-osx:
+	rm -f ~/.bashrc
+	rm -f ~/.bash_profile
+	ln -s `pwd`/bash_osx/bashrc ~/.bashrc
+	ln -s `pwd`/bash_osx/bash_profile ~/.bash_profile
+
 install-git:
 	rm -f ~/.gitconfig
 	ln -s `pwd`/git/gitconfig ~/.gitconfig
