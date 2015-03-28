@@ -1,10 +1,28 @@
-install: install-vim install-bash install-python \
-         install-git
+help:
+	@echo "  install-linux		dotfiles for linux"
+	@echo "  install-osx		dotfiles for osx"
+	@echo "  =========== single commands ==========="
+	@echo "  install-git		git dotfiles"
+	@echo "  install-bash		bash dotfiles"
+	@echo "  install-bash-osx	bash_profile for osx"
+	@echo "  install-emacs		emacs dotfiles"
+	@echo "  install-vim		vim dotfiles"
+	@echo "  install-vim-basic	vim basic dotfiles (without plugins)"
+
+
+install-linux: install-vim install-emacs install-bash install-git
+
+install-osx: install-vim install-emacs install-bash-osx install-git
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
 	ln -s `pwd`/vim ~/.vim
-	ln -s ~/.vim/vimrc ~/.vimrc
+	`pwd`/vim/install_awesome_vimrc.sh
+
+install-vim-basic:
+	rm -rf ~/.vim ~/.vimrc
+	ln -s `pwd`/vim ~/.vim
+	`pwd`/vim/install_basic_vimrc.sh
 
 install-emacs:
 	rm -rf ~/.emacs.d
@@ -12,15 +30,15 @@ install-emacs:
 
 install-bash:
 	rm -f ~/.bashrc
-	ln -s `pwd`/bash/bashrc ~/.bashrc
+	ln -s `pwd`/bash/ ~/.bash.d
+	ln -s ~/.bash.d/bashrc ~/.bashrc
 
-install-osx:
-	rm -f ~/.bashrc
+install-bash-osx:
+	install-bash
 	rm -f ~/.bash_profile
-	ln -s `pwd`/bash_osx/bashrc ~/.bashrc
-	ln -s `pwd`/bash_osx/bash_profile ~/.bash_profile
+	ln -s ~/.bash.d/bash_profile ~/.bash_profile
 
 install-git:
 	rm -f ~/.gitconfig
-	ln -s `pwd`/git/gitconfig ~/.gitconfig
-
+	ln -s `pwd`/git ~/.git.d
+	ln -s ~/.git.d/gitconfig ~/.gitconfig

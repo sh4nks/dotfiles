@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# These functions make my life easier :)
+function extract () {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2) tar xvjf $1;;
+            *.tar.gz) tar xvzf $1;;
+            *.bz2) bunzip2 $1;;
+            *.rar) unrar x $1;;
+            *.gz) gunzip $1;;
+            *.tar) tar xvf $1;;
+            *.tbz2) tar xvjf $1;;
+            *.tgz) tar xvzf $1;;
+            *.zip) unzip $1;;
+            *.Z) uncompress $1;;
+            *.7z) 7za x $1;;
+            *) echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+	echo "'$1' is not a valid file"
+    fi
+}
+
+function exip () {
+    echo -n "Current External IP: "
+    curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/<b>IP Address:<\/b> <span class="ha4">//g' -e 's/<\/span><br \/><br \/>//g'
+}
+
+
+function psgrep() {
+  ps aux | grep "$1" | grep -v "grep"
+}
+
+function mkcd() {
+  mkdir -p "$1"
+  cd "$1"
+}
+
+# This will update your requirements.txt file to the latest applications
+function update_pip_deps {
+  echo "Generating dependencies without version number..."
+  pip freeze | cut -d = -f 1 > $1
+  cp $1 requirement2.txt
+  echo "Trying to get the latest packages available at PyPI..."
+  pip install --upgrade -r $*
+  echo "Generating new requirements.txt file for the latest packages..."
+  pip freeze > $1
+}
+
+function clean_pip_deps {
+  echo "Generating dependencies from requirements.txt file without version number..."
+  cat requirements.txt | cut -d = -f 1 > requirements2.txt
+  echo "Done."
+}
+
+# Useful command for stripping whitespace
+function remove_trailing_whitespace() {
+  find . -name $* -exec sed -i '' -e's/[[:space:]]*$//' {} \;
+}
+
+# Userful for replacing tabs with spaces
+# $1 --> file ending. for example: `convert_tabs_to_spaces .py`
+# this will convert all taps to spaces from all *.py files recursively
+# in the directory
+function convert_tabs_to_spaces() {
+    find . ! -type d ! -name _tmp_ -iname "*$1" -type f -exec sh -c 'expand -t 4 {} > _tmp_ && mv _tmp_ {}' \;
+}
