@@ -15,14 +15,14 @@ install-linux: install-vim install-emacs install-bash install-git
 install-osx: install-vim install-emacs install-bash-osx install-git
 
 install-vim:
-	rm -rf ~/.vim ~/.vimrc
-	ln -s `pwd`/vim ~/.vim
-	`pwd`/vim/install_awesome_vimrc.sh
+	rm -rf ~/.vim ~/.vim_runtime ~/.vimrc
+	ln -s `pwd`/vim ~/.vim_runtime
+	sh `pwd`/vim/install_awesome_vimrc.sh
 
 install-vim-basic:
 	rm -rf ~/.vim ~/.vimrc
 	ln -s `pwd`/vim ~/.vim
-	`pwd`/vim/install_basic_vimrc.sh
+	sh `pwd`/vim/install_basic_vimrc.sh
 
 install-emacs:
 	rm -rf ~/.emacs.d
