@@ -66,3 +66,14 @@ function remove_trailing_whitespace() {
 function convert_tabs_to_spaces() {
     find . ! -type d ! -name _tmp_ -iname "*$1" -type f -exec sh -c 'expand -t 4 {} > _tmp_ && mv _tmp_ {}' \;
 }
+
+
+function svn_add() {
+    for i in $(svn status | grep ? | awk '{print $2}'); do svn add $i; done
+}
+
+
+function svn_delete() {
+    for i in $(svn status | grep ? | awk '{print $2}'); do svn delete $i; done
+}
+
