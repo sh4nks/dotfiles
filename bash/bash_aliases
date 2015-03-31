@@ -72,7 +72,7 @@ elif [[ ${distribution} == "OSX" ]]; then
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
     # Finder: show/hide all filename extensions
     alias showext="defaults write NSGlobalDomain AppleShowAllExtensions -bool true"
-    alias hideext?"defaults write NSGlobalDomain AppleShowAllExtensions -bool false"
+    alias hideext="defaults write NSGlobalDomain AppleShowAllExtensions -bool false"
     # Avoid creating .DS_Store files on network volumes
     alias disable_ds="defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true"
     # Hide/show all desktop icons (useful when presenting)

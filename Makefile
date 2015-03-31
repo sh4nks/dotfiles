@@ -33,8 +33,7 @@ install-bash:
 	ln -s `pwd`/bash/ ~/.bash.d
 	ln -s ~/.bash.d/bashrc ~/.bashrc
 
-install-bash-osx:
-	install-bash
+install-bash-osx: install-bash
 	rm -f ~/.bash_profile
 	ln -s ~/.bash.d/bash_profile ~/.bash_profile
 
