@@ -9,8 +9,8 @@ if [[ "$unamestr" == 'Linux' ]]; then
    platform='linux'
    distribution=$(awk '/^NAME=/ { print $0 }' /etc/os-release | cut -d '=' -f 2 | tr -d '\"')
 elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='Darwin'
-   distribution='OSX'
+   platform='darwin'
+   distribution=$(sw_vers -productVersion)
 fi
 
 
@@ -30,7 +30,7 @@ complete -cf sudo
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
 
 # osx specific
-if [[ $platform == "Darwin" ]]; then
+if [[ $platform == "darwin" ]]; then
     complete -W "NSGlobalDomain" defaults
     complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall # Add `killall` tab completion for common apps
 fi
@@ -73,6 +73,10 @@ shopt -s extglob      # Allows basic regexps in bash.
 shopt -s checkwinsize # update the values of lines and columns.
 set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
 
+if [[ ${distribution} == "OSX" ]]; then
+    export LC_CTYPE=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+fi
 
 # Public Aliases
 # ------------------------------

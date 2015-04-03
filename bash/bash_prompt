@@ -95,10 +95,10 @@ fi
 #GIT_PS1_SHOWUNTRACKEDFILES=true
 
 # A few prompts (most of them are from the archwiki)
-#PS1="\[$BGreen\]\u\[$BCyan\]@\[$BGreen\]\h \[$BBlue\]\w\[$BBlue\]\$(__git_ps1 ' (%s)') $ \[$Color_Off\]"
+PS1="\[$BRed\]\u\[$White\] at \[$BGreen\]\h\[$White\] in \[$BYellow\]\w\[$White\]\$(__git_ps1 ' at \[$BBlue\]%s') $ \[$Color_Off\]"
 
-PS1="\[$White\]┌─[\[$Blue\]\u\[$White\]][\[$Green\]\h\[$White\]][\[$Purple\]\w\[$White\]]\[$Cyan\]\$(__git_ps1 '[%s]')\n\[$White\]└──╼ \[$Color_Off"
-PS2="╾──╼ "
+#PS1="\[$White\]┌─[\[$Blue\]\u\[$White\]][\[$Green\]\h\[$White\]][\[$Purple\]\w\[$White\]]\[$Cyan\]\$(__git_ps1 '[%s]')\n\[$White\]└──╼ \[$Color_Off"
+#PS2="╾──╼ "
 
 # https://wiki.archlinux.org/index.php/Color_Bash_Prompt#From_Arch_Forum_.231
 # https://bbs.archlinux.org/viewtopic.php?pid=1068202#p1068202
