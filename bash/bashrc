@@ -30,11 +30,21 @@ complete -cf sudo
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
 
 # osx specific
-if [[ $platform == "darwin" ]]; then
+if [ $platform == "darwin" ]; then
     complete -W "NSGlobalDomain" defaults
     complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall # Add `killall` tab completion for common apps
 fi
 
+# LESS source highlighting
+if [ -f /usr/local/bin/src-hilite-lesspipe.sh ]; then
+    # osx
+    export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+    export LESS=" -R "
+elif [ -f /usr/bin/src-hilite-lesspipe.sh ]; then
+    # arch/debian
+    export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+    export LESS=" -R "
+fi
 
 # Additional $PATH paths
 # ------------------------------
@@ -73,9 +83,10 @@ shopt -s extglob      # Allows basic regexps in bash.
 shopt -s checkwinsize # update the values of lines and columns.
 set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
 
-if [[ ${distribution} == "OSX" ]]; then
+if [ $platform == "darwin" ]; then
     export LC_CTYPE=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
 fi
 
 # Public Aliases
