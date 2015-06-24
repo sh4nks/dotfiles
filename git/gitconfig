@@ -64,3 +64,6 @@
 	default=current
 [diff]
 	algorithm = patience
+	guitool = meld
+[merge]
+	tool = meld
