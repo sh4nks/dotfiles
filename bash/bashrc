@@ -40,23 +40,29 @@ if [ -f /usr/local/bin/src-hilite-lesspipe.sh ]; then
     # osx
     export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
     export LESS=" -R "
+    # add -N for line numbers
+    alias less='less -m -g -i -J --underline-special --SILENT'
 elif [ -f /usr/bin/src-hilite-lesspipe.sh ]; then
     # arch/debian
     export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
     export LESS=" -R "
+    alias less='less -m -g -i -J --underline-special --SILENT'
 fi
 
 # Additional $PATH paths
 # ------------------------------
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/.bin ] ; then
-    PATH=~/.bin:"${PATH}"
+    PATH=$HOME/.bin:"${PATH}"
 fi
 
 if [ -d ~/.local/bin ]; then
-    PATH=~/.local/bin:"${PATH}"
+    PATH=$HOME/.local/bin:"${PATH}"
 fi
 
+if [ -d $HOME/.rvm/bin ]; then
+    PATH=$HOME/.rvm/bin:"${PATH}"
+fi
 
 # Global Environment Definitions
 # ------------------------------
@@ -64,9 +70,10 @@ export EDITOR='vim'
 export WORKON_HOME=~/.virtualenvs
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
     source /usr/local/bin/virtualenvwrapper.sh
-else                                                # Arch Linux
+elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
     source /usr/bin/virtualenvwrapper.sh
 fi
+
 VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
 export PYMACS_PYTHON=python2
 export HISTCONTROL=ignoredups # don't put duplicate lines in the history
@@ -109,3 +116,5 @@ fi
 # Prompt
 # ------------------------------
 . ~/.bash.d/bash_prompt
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
