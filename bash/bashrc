@@ -35,18 +35,18 @@ if [ $platform == "darwin" ]; then
     complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall # Add `killall` tab completion for common apps
 fi
 
-# LESS source highlighting
-if [ -f /usr/local/bin/src-hilite-lesspipe.sh ]; then
-    # osx
-    export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
-    export LESS=" -R "
-    # add -N for line numbers
-    alias less='less -m -g -i -J --underline-special --SILENT'
-elif [ -f /usr/bin/src-hilite-lesspipe.sh ]; then
-    # arch/debian
-    export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
-    export LESS=" -R "
-    alias less='less -m -g -i -J --underline-special --SILENT'
+# less and cat source highlighting with highlight.
+# Install highlight with ${YOUR_FAVORITE_PACKAGEMANAGER} highlight
+# All available themes can be retrieved with this command: highlight --list-scripts=themes
+if hash highlight 2>/dev/null; then
+    # Pipe Highlight to less
+    export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style moria"
+    export LESS=" -R"
+    alias less='less -m -N -g -i -J --line-numbers --underline-special'
+    alias more='less'
+
+    # Use "highlight" in place of "cat"
+    alias cat="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style moria"
 fi
 
 # Additional $PATH paths
