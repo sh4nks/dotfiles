@@ -60,8 +60,10 @@ fi
 
 # Global Environment Definitions
 # ------------------------------
+export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizing (steam is still running)
 export EDITOR='vim'
 export WORKON_HOME=~/.virtualenvs
+export ANDROID_HOME=~/.android/sdk
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
     source /usr/local/bin/virtualenvwrapper.sh
 else                                                # Arch Linux
@@ -74,6 +76,7 @@ export HISTCONTROL=ignoreboth # ignore same sucessive entries.
 export HISTCONTROL=erasedups  # ignore duplicate entries in history
 export HISTSIZE=10000         # Increases size of history
 export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 shopt -s histappend   # Append history instead of overwriting
 shopt -s cdspell      # Correct minor spelling errors in cd command
 shopt -s dotglob      # includes dotfiles in pathname expansion
