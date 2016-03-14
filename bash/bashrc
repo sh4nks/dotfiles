@@ -46,7 +46,7 @@ if hash highlight 2>/dev/null; then
     alias more='less'
 
     # Use "highlight" in place of "cat"
-    alias cat="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style moria"
+    #alias cat="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style moria"
 fi
 
 # Additional $PATH paths
