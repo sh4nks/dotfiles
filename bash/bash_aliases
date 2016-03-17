@@ -35,17 +35,18 @@ if [[ ${distribution} == "Arch Linux" ]]; then
     alias install='sudo pacman -S'
     alias remove='sudo pacman -Rns'
     alias search='pacman -Ss'
-    alias update='apacman -Syu'
+    alias update='pacaur -Syu'
     alias remove_unused='sudo pacman -Rns $(pacman -Qqtd)' # See: http://bbs.archbang.org/viewtopic.php?pid=13120#p13120
     alias searchlocal='pacman -Qs'
+    alias showaurpkgs='pacman -Qqm'
     alias showinfo="pacman -Si"    # '[i]nfo'    - show information about a package
     alias listorphans="pacman -Qdt"    # '[l]ist [o]rphans'  - list all packages which are orphaned
     alias clearcache="sudo pacman -Scc"    # '[c]lean cache' - delete all not currently installed package files
     alias listfiles="pacman -Ql"   # '[l]ist [f]iles'  - list all files installed by a given package
-    alias aurupdate='apacman -Syu --auronly --noedit --noconfirm'
-    alias aurinstall='apacman -S'
-    alias aursearch='apacman -Ss'
-    alias aurdevel='apacman -Syu --devel'
+    alias aurupdate='pacaur -Syu --aur --noedit --noconfirm'
+    alias aurinstall='pacaur -S --aur'
+    alias aursearch='pacaur -Ss'
+    alias aurdevel='pacaur -Syu --devel'
 
 elif [[ ${distribution} == "Debian GNU/Linux" ]]; then
     alias install='apt-get install'
