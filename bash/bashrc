@@ -6,22 +6,22 @@ platform='unknown'
 distribution='unkown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
-   distribution=$(awk '/^NAME=/ { print $0 }' /etc/os-release | cut -d '=' -f 2 | tr -d '\"')
+    platform='linux'
+    distribution=$(awk '/^NAME=/ { print $0 }' /etc/os-release | cut -d '=' -f 2 | tr -d '\"')
 elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='darwin'
-   distribution=$(sw_vers -productVersion)
+    platform='darwin'
+    distribution=$(sw_vers -productVersion)
 fi
 
 
 # Completions
 # ------------------------------
 if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
 
 if [ -f /usr/local/git/contrib/completion ]; then
-  . /usr/local/git/contrib/completion/git-completion.bash
+    source /usr/local/git/contrib/completion/git-completion.bash
 fi
 
 # sudo completion
@@ -49,10 +49,15 @@ if hash highlight 2>/dev/null; then
     #alias cat="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style moria"
 fi
 
+# External config
+if [[ -r ~/.dircolors ]] && type -p dircolors >/dev/null; then
+  eval $(dircolors -b "$HOME/.dircolors")
+fi
+
 # Additional $PATH paths
 # ------------------------------
 # set PATH so it includes user's private bin if it exists
-if [ -d ~/.bin ] ; then
+if [ -d ~/.bin ]; then
     PATH=$HOME/.bin:"${PATH}"
 fi
 
@@ -67,13 +72,23 @@ fi
 # Global Environment Definitions
 # ------------------------------
 export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizing (steam is still running)
+#export STEAM_RUNTIME=0              # Uses system libraries to run steam (archlinux yeah \o/)
 export EDITOR='vim'
 export WORKON_HOME=~/.virtualenvs
-export ANDROID_HOME=~/.android/sdk
+export ANDROID_HOME=/opt/android-sdk  # pacaur -S android-sdk
+export GOPATH=~/Development/Go
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
     source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
     source /usr/bin/virtualenvwrapper.sh
+fi
+
+if [ $platform == "darwin" ]; then
+    export LC_CTYPE=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+
+    export ANDROID_HOME=~/.android/sdk  # the android sdk is located here on osx
 fi
 
 VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
@@ -91,33 +106,28 @@ shopt -s checkwinsize # If window size changes, redraw contents
 shopt -s cmdhist      # Multiline commands are a single command in history.
 shopt -s extglob      # Allows basic regexps in bash.
 shopt -s checkwinsize # update the values of lines and columns.
-set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
-
-if [ $platform == "darwin" ]; then
-    export LC_CTYPE=en_US.UTF-8
-    export LC_ALL=en_US.UTF-8
-    export LANG=en_US.UTF-8
-fi
+#set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
 
 # Public Aliases
 # ------------------------------
-. ~/.bash.d/bash_aliases
+source ~/.bash.d/bash_aliases
 
 
 # Private Aliases
 # ------------------------------
 if [ -f ~/.bash.d/bash_alias_private ]; then
-    . ~/.bash.d/bash_alias_private
+    source ~/.bash.d/bash_alias_private
 fi
 
 
 # Functions / Helpers
 # ------------------------------
-. ~/.bash.d/bash_functions
+source ~/.bash.d/bash_functions
 
 
 # Prompt
 # ------------------------------
-. ~/.bash.d/bash_prompt
+source ~/.bash.d/bash_prompt
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source /usr/share/nvm/init-nvm.sh

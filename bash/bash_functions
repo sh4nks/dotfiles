@@ -18,7 +18,7 @@ function extract () {
             *) echo "'$1' cannot be extracted via >extract<" ;;
         esac
     else
-	echo "'$1' is not a valid file"
+        echo "'$1' is not a valid file"
     fi
 }
 
@@ -29,34 +29,34 @@ function exip () {
 
 
 function psgrep() {
-  ps aux | grep "$1" | grep -v "grep"
+    ps aux | grep "$1" | grep -v "grep"
 }
 
 function mkcd() {
-  mkdir -p "$1"
-  cd "$1"
+    mkdir -p "$1"
+    cd "$1"
 }
 
 # This will update your requirements.txt file to the latest applications
 function update_pip_deps {
-  echo "Generating dependencies without version number..."
-  pip freeze | cut -d = -f 1 > $1
-  cp $1 requirement2.txt
-  echo "Trying to get the latest packages available at PyPI..."
-  pip install --upgrade -r $*
-  echo "Generating new requirements.txt file for the latest packages..."
-  pip freeze > $1
+    echo "Generating dependencies without version number..."
+    pip freeze | cut -d = -f 1 > $1
+    cp $1 requirement2.txt
+    echo "Trying to get the latest packages available at PyPI..."
+    pip install --upgrade -r $*
+    echo "Generating new requirements.txt file for the latest packages..."
+    pip freeze > $1
 }
 
 function clean_pip_deps {
-  echo "Generating dependencies from requirements.txt file without version number..."
-  cat requirements.txt | cut -d = -f 1 > requirements2.txt
-  echo "Done."
+    echo "Generating dependencies from requirements.txt file without version number..."
+    cat requirements.txt | cut -d = -f 1 > requirements2.txt
+    echo "Done."
 }
 
 # Useful command for stripping whitespace
 function remove_trailing_whitespace() {
-  find . -name $* -exec sed -i '' -e's/[[:space:]]*$//' {} \;
+    find . -name $* -exec sed -i '' -e's/[[:space:]]*$//' {} \;
 }
 
 # Userful for replacing tabs with spaces
@@ -77,3 +77,33 @@ function svn_delete() {
     for i in $(svn status | grep ? | awk '{print $2}'); do svn delete $i; done
 }
 
+function hex2dec() {
+  printf "%d\n" 0x$1
+}
+
+function hex2ip() {
+    printf '%d.%d.%d.%d\n' \
+        $(( 0x${1:6:2} )) \
+        $(( 0x${1:4:2} )) \
+        $(( 0x${1:2:2} )) \
+        $(( 0x${1:0:2} ))
+}
+
+function ip2hex() {
+      local octets
+      IFS=. read -a octets <<<"$1"
+      printf '%02x' "${octets[@]}"
+      echo
+}
+
+function traffic() {
+    ss -t '( not dst localhost )' | awk '
+        NR > 1 {
+            sub(/:[^:]+$/, "", $NF)
+            a[$NF]++
+        }
+        END {
+            for (h in a)
+                printf "%s\t%d\n", h, a[h]
+        }'
+}

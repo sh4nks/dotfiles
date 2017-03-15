@@ -14,6 +14,9 @@ alias dux='du -skh ./* | sort -h | grep -v total && du -cskh ./* | grep --color=
 alias gurl='curl --compressed' # Gzip-enabled `curl`
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias webshare='python -m http.server 8080'
+alias gensums='[[ -f PKGBUILD ]] && makepkg -g >> PKGBUILD'
+alias open='xdg-open'
 
 # Directory
 alias ..="cd .."

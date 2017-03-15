@@ -84,8 +84,9 @@ else
     if [ ! -d $HOME/.git.d/ ]; then
         mkdir -p $HOME/.git.d/
     fi
-    wget https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -P $HOME/.git.d/
-    . $HOME/.git.d/git-prompt.sh
+    #wget https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -P $HOME/.git.d/
+    curl -o $HOME/.git.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+    source $HOME/.git.d/git-prompt.sh
 fi
 # * for unstaged and + for staged changes
 #GIT_PS1_SHOWDIRTYSTATE=true
