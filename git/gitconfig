@@ -1,6 +1,6 @@
 [user]
-	name = sh4nks
-	email = sh4nks7@gmail.com
+	name = Peter Justin
+	email = peter.justin@outlook.com
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
@@ -41,7 +41,7 @@
 	unci = reset HEAD^
 	uncommit = reset HEAD^
 	ls = ls-files
-        rup = !git remote update `git rev-parse --symbolic-full-name HEAD@{u}|cut -d/ -f3`
+	rup = !git remote update `git rev-parse --symbolic-full-name HEAD@{u}|cut -d/ -f3`
 	in = !git wtf HEAD..HEAD@{u}
 	out = !git wtf HEAD@{u}..HEAD
 	killbranches = !git branch | grep -v '\\bmaster\\b' | xargs git branch -d 2> /dev/null
@@ -67,3 +67,9 @@
 	guitool = meld
 [merge]
 	tool = meld
+[cola]
+	fontdiff = Source Code Pro,11,-1,0,50,0,0,0,0,0
+	blameviewer = git gui blame
+[gui]
+	historybrowser = gitk
+	editor = subl3
