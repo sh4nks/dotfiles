@@ -49,6 +49,7 @@ elif [ -f /usr/bin/src-hilite-lesspipe.sh ]; then
     alias less='less -m -g -i -J --underline-special --SILENT'
 fi
 
+
 # Additional $PATH paths
 # ------------------------------
 # set PATH so it includes user's private bin if it exists
@@ -64,6 +65,7 @@ if [ -d $HOME/.rvm/bin ]; then
     PATH=$HOME/.rvm/bin:"${PATH}"
 fi
 
+
 # Global Environment Definitions
 # ------------------------------
 export EDITOR='vim'
@@ -73,9 +75,9 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
     source /usr/bin/virtualenvwrapper.sh
 fi
-
 VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
 export PYMACS_PYTHON=python2
+
 export HISTCONTROL=ignoredups # don't put duplicate lines in the history
 export HISTCONTROL=ignoreboth # ignore same sucessive entries.
 export HISTCONTROL=erasedups  # ignore duplicate entries in history
@@ -116,5 +118,3 @@ fi
 # Prompt
 # ------------------------------
 . ~/.bash.d/bash_prompt
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
