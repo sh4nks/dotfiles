@@ -75,7 +75,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
     source /usr/bin/virtualenvwrapper.sh
 fi
-
+export GOPATH=~/Development/go
 VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
 export PYMACS_PYTHON=python2
 export HISTCONTROL=ignoredups # don't put duplicate lines in the history

@@ -1,6 +1,6 @@
 [user]
-	name = sh4nks
-	email = sh4nks7@gmail.com
+	name = Peter Justin
+	email = peter.justin@outlook.com
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
@@ -65,5 +65,16 @@
 [diff]
 	algorithm = patience
 	guitool = meld
+	tool = opendiff
 [merge]
-	tool = meld
+	tool = opendiff
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[difftool "openshift"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[mergetool "opendiff"]
+	cmd = opendiff -merge \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = false
