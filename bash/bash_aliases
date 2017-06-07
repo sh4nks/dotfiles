@@ -9,11 +9,14 @@ alias tarc='tar -pczf'
 alias tare='extract'
 alias bitch,='sudo' # for the lulz
 alias sudo='sudo ' # Enable aliases to be sudo’ed
-alias ifconfig='ip addr'  # i just type this too often
+#alias ifconfig='ip addr'  # i just type this too often
 alias dux='du -skh ./* | sort -h | grep -v total && du -cskh ./* | grep --color=never total' # get an ordered list of subdirectory sizes
 alias gurl='curl --compressed' # Gzip-enabled `curl`
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias webshare='python -m http.server 8080'
+alias gensums='[[ -f PKGBUILD ]] && makepkg -g >> PKGBUILD'
+alias open='xdg-open'
 
 # Directory
 alias ..="cd .."
