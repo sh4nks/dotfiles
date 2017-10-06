@@ -59,6 +59,7 @@ elif [[ ${distribution} == "Debian GNU/Linux" ]]; then
     alias update='apt-get update && apt-get upgrade'
 
 elif [[ ${platform} == "darwin" ]]; then
+    unalias open
     alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
     #alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages

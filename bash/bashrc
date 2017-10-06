@@ -79,6 +79,11 @@ export EDITOR='vim'
 export WORKON_HOME=~/.virtualenvs
 export ANDROID_HOME=/opt/android-sdk  # pacaur -S android-sdk
 export GOPATH=~/Development/Go
+
+if [ $platform == "darwin" ]; then
+	export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+fi
+
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
     source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
