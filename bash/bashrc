@@ -54,6 +54,7 @@ if [[ -r ~/.dircolors ]] && type -p dircolors >/dev/null; then
   eval $(dircolors -b "$HOME/.dircolors")
 fi
 
+
 # Additional $PATH paths
 # ------------------------------
 # set PATH so it includes user's private bin if it exists
@@ -69,6 +70,7 @@ if [ -d $HOME/.rvm/bin ]; then
     PATH=$HOME/.rvm/bin:"${PATH}"
 fi
 
+
 # Global Environment Definitions
 # ------------------------------
 export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizing (steam is still running)
@@ -77,6 +79,11 @@ export EDITOR='vim'
 export WORKON_HOME=~/.virtualenvs
 export ANDROID_HOME=/opt/android-sdk  # pacaur -S android-sdk
 export GOPATH=~/Development/Go
+
+if [ $platform == "darwin" ]; then
+	export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+fi
+
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
     source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
@@ -93,6 +100,7 @@ fi
 
 VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
 export PYMACS_PYTHON=python2
+
 export HISTCONTROL=ignoredups # don't put duplicate lines in the history
 export HISTCONTROL=ignoreboth # ignore same sucessive entries.
 export HISTCONTROL=erasedups  # ignore duplicate entries in history
@@ -128,6 +136,3 @@ source ~/.bash.d/bash_functions
 # Prompt
 # ------------------------------
 source ~/.bash.d/bash_prompt
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source /usr/share/nvm/init-nvm.sh
