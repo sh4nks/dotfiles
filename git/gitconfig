@@ -64,10 +64,6 @@
 	default=current
 [diff]
 	algorithm = patience
-	guitool = meld
-	tool = opendiff
-[merge]
-	tool = opendiff
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -78,5 +74,13 @@
 [mergetool "opendiff"]
 	cmd = opendiff -merge \"$MERGED\" \"$LOCAL\" \"$REMOTE\"
 	trustExitCode = false
+[merge]
+	tool = kompare
+	summary = true
 [cola]
+	fontdiff = Source Code Pro,11,-1,0,50,0,0,0,0,0
+	blameviewer = git gui blame
 	spellcheck = false
+[gui]
+	historybrowser = git-dag
+	editor = subl

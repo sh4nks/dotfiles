@@ -136,3 +136,8 @@ source ~/.bash.d/bash_functions
 # Prompt
 # ------------------------------
 source ~/.bash.d/bash_prompt
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
