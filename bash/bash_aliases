@@ -38,7 +38,7 @@ if [[ ${distribution} == "Arch Linux" ]]; then
     alias install='sudo pacman -S'
     alias remove='sudo pacman -Rns'
     alias search='pacman -Ss'
-    alias update='pacaur -Syu'
+    alias update='pikaur -Syu'
     alias remove_unused='sudo pacman -Rns $(pacman -Qqtd)' # See: http://bbs.archbang.org/viewtopic.php?pid=13120#p13120
     alias searchlocal='pacman -Qs'
     alias showaurpkgs='pacman -Qqm'
@@ -46,10 +46,10 @@ if [[ ${distribution} == "Arch Linux" ]]; then
     alias listorphans="pacman -Qdt"    # '[l]ist [o]rphans'  - list all packages which are orphaned
     alias clearcache="sudo pacman -Scc"    # '[c]lean cache' - delete all not currently installed package files
     alias listfiles="pacman -Ql"   # '[l]ist [f]iles'  - list all files installed by a given package
-    alias aurupdate='pacaur -Syu --aur --noedit --noconfirm'
-    alias aurinstall='pacaur -S --aur'
-    alias aursearch='pacaur -Ss'
-    alias aurdevel='pacaur -Syu --devel'
+    alias aurupdate='pikaur -Syu --aur --noedit --noconfirm'
+    alias aurinstall='pikaur -S --aur'
+    alias aursearch='pikaur -Ss'
+    alias aurdevel='pikaur -Syu --devel'
     alias chrome='google-chrome-stable'
 
 elif [[ ${distribution} == "Debian GNU/Linux" ]]; then
