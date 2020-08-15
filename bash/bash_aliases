@@ -17,6 +17,7 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias webshare='python -m http.server 8080'
 alias gensums='[[ -f PKGBUILD ]] && makepkg -g >> PKGBUILD'
 alias open='xdg-open'
+alias mi='micro'
 
 # Directory
 alias ..="cd .."
@@ -29,7 +30,6 @@ alias l='ls -vphl --color=auto --group-directories-first --time-style="+%d-%m-%Y
 alias ll='ls -vphlA --color=auto --group-directories-first --time-style="+%d-%m-%Y %H:%M"'
 
 # Editors
-alias nano='vim'
 alias ec='emacsclient -c -n -a vim'
 alias et='emacsclient -t -a vim'
 
