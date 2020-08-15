@@ -24,9 +24,6 @@ FILE_ENDINGS = ".tar.gz .zip .deb .rpm .pkg.tar .tar.bz2".split()
 EXCLUDED_DIRS = set([".git", "objects", "refs", "info", "hooks", "branches"])
 DRY_RUN = False
 
-log(f"Using cache dir: {CACHE_DIR}")
-log(f"Looking for following file endings: {', '.join(FILE_ENDINGS)}\n")
-
 
 def humansize(nbytes):
     suffixes = ["B", "KB", "MB", "GB", "TB", "PB"]
@@ -114,7 +111,13 @@ def delete_files(files):
         os.remove(f)
 
 
-def main(dry_run=False):
+def main(dry_run=False, force=False):
+    log(f"Using cache dir: {CACHE_DIR}")
+    log(
+        f"Looking for files with following file endings: "
+        f"{', '.join(FILE_ENDINGS)}\n"
+    )
+
     if not os.path.exists(CACHE_DIR):
         log(f"Cache directory does not exist: {CACHE_DIR}")
         return
@@ -141,14 +144,13 @@ def main(dry_run=False):
         + ".\n"
     )
 
-    if prompt_yes_no("Do you want to continue?"):
-        if dry_run:
-            log(
-                "\n" + bcolors.WARNING + "No files are going to be deleted "
-                "- dry run."
-            )
-            return
+    if dry_run:
+        log(bcolors.WARNING + "No files deleted - dry run.")
+        return
 
+    if not force and not prompt_yes_no("Do you want to continue?"):
+        return
+    else:
         delete_files(all_files)
         log(
             bcolors.OKGREEN
@@ -159,8 +161,15 @@ def main(dry_run=False):
 
 
 if __name__ == "__main__":
-    dry_run = False
-    if len(sys.argv) > 1 and sys.argv[1] == "dryrun":
-        dry_run = True
+    import argparse
 
-    main(dry_run)
+    parser = argparse.ArgumentParser(description="Clean AUR cache.")
+    parser.add_argument(
+        "--force", action="store_true", help="Forcefully delete the files"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Don't delete any files"
+    )
+    args = parser.parse_args()
+
+    main(args.dry_run, args.force)
