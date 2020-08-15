@@ -45,3 +45,4 @@ install-git:
 install-scripts:
 	ln -sfT `pwd`/scripts/clean_aur_cache.py ~/.bin/clean_aur_cache.py
 	ln -sfT `pwd`/scripts/compare_dirs.py ~/.bin/compare_dirs.py
+	ln -sfT `pwd`/scripts/checksize.sh ~/.bin/checksize.sh
