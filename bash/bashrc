@@ -33,7 +33,8 @@ export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizi
 export EDITOR='vim'
 export WORKON_HOME=~/.virtualenvs
 export ANDROID_HOME=$HOME/.android/sdk
-#export GOPATH=~/Development/Go
+export GOPATH=~/Development/Go
+export GO111MODULE=on
 export PATH="/usr/lib/ccache/bin/:$PATH" # include ccache's binaries before the path to your compiler
 export PATH="$PATH:/opt/dart-sdk/bin"
 export PATH="$PATH:~/.local/apps/flutter/bin"
@@ -94,6 +95,10 @@ fi
 
 if [ -d $HOME/.rvm/bin ]; then
     PATH=$HOME/.rvm/bin:"${PATH}"
+fi
+
+if [ -d $HOME/Development/Go/bin ]; then
+    PATH=$HOME/Development/Go/bin:"${PATH}"
 fi
 
 
