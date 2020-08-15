@@ -26,6 +26,77 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 
+# Global Environment Definitions
+# ------------------------------
+export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizing (steam is still running)
+#export STEAM_RUNTIME=0              # Uses system libraries to run steam (archlinux yeah \o/)
+export EDITOR='vim'
+export WORKON_HOME=~/.virtualenvs
+export ANDROID_HOME=$HOME/.android/sdk
+#export GOPATH=~/Development/Go
+export PATH="/usr/lib/ccache/bin/:$PATH" # include ccache's binaries before the path to your compiler
+export PATH="$PATH:/opt/dart-sdk/bin"
+export PATH="$PATH:~/.local/apps/flutter/bin"
+
+if [ $platform == "darwin" ]; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+fi
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
+    source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+fi
+
+if [ -f $HOME/.travis/travis.sh ]; then
+    source $HOME/.travis/travis.sh
+fi
+
+if [ $platform == "darwin" ]; then
+    export LC_CTYPE=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+fi
+
+VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
+export PYMACS_PYTHON=python2
+
+export HISTCONTROL=ignoredups # don't put duplicate lines in the history
+export HISTCONTROL=ignoreboth # ignore same sucessive entries.
+export HISTCONTROL=erasedups  # ignore duplicate entries in history
+export HISTSIZE=10000         # Increases size of history
+export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+shopt -s histappend   # Append history instead of overwriting
+shopt -s cdspell      # Correct minor spelling errors in cd command
+shopt -s dotglob      # includes dotfiles in pathname expansion
+shopt -s checkwinsize # If window size changes, redraw contents
+shopt -s cmdhist      # Multiline commands are a single command in history.
+shopt -s extglob      # Allows basic regexps in bash.
+shopt -s checkwinsize # update the values of lines and columns.
+#set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
+
+
+# Additional $PATH paths
+# ------------------------------
+# set PATH so it includes user's private bin if it exists
+if [ -d ~/.bin ]; then
+    PATH=$HOME/.bin:"${PATH}"
+fi
+
+if [ -d ~/.local/bin ]; then
+    PATH=$HOME/.local/bin:"${PATH}"
+fi
+
+if [ -d $HOME/.rvm/bin ]; then
+    PATH=$HOME/.rvm/bin:"${PATH}"
+fi
+
+
 # Completions
 # ------------------------------
 if [ -f /etc/bash_completion ]; then
@@ -67,67 +138,6 @@ if [[ -r ~/.dircolors ]] && type -p dircolors >/dev/null; then
 fi
 
 
-# Additional $PATH paths
-# ------------------------------
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/.bin ]; then
-    PATH=$HOME/.bin:"${PATH}"
-fi
-
-if [ -d ~/.local/bin ]; then
-    PATH=$HOME/.local/bin:"${PATH}"
-fi
-
-if [ -d $HOME/.rvm/bin ]; then
-    PATH=$HOME/.rvm/bin:"${PATH}"
-fi
-
-
-# Global Environment Definitions
-# ------------------------------
-export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizing (steam is still running)
-#export STEAM_RUNTIME=0              # Uses system libraries to run steam (archlinux yeah \o/)
-export EDITOR='vim'
-export WORKON_HOME=~/.virtualenvs
-export ANDROID_HOME=/opt/android-sdk  # pacaur -S android-sdk
-export GOPATH=~/Development/Go
-
-if [ $platform == "darwin" ]; then
-	export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-fi
-
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then # OSX and Debian
-    source /usr/local/bin/virtualenvwrapper.sh
-elif [ -f /usr/bin/virtualenvwrapper.sh ]; then     # Arch Linux
-    source /usr/bin/virtualenvwrapper.sh
-fi
-
-if [ $platform == "darwin" ]; then
-    export LC_CTYPE=en_US.UTF-8
-    export LC_ALL=en_US.UTF-8
-    export LANG=en_US.UTF-8
-
-    export ANDROID_HOME=~/.android/sdk  # the android sdk is located here on osx
-fi
-
-VIRTUAL_ENV_DISABLE_PROMPT=1  # don't let virtualenv show prompts by itself
-export PYMACS_PYTHON=python2
-
-export HISTCONTROL=ignoredups # don't put duplicate lines in the history
-export HISTCONTROL=ignoreboth # ignore same sucessive entries.
-export HISTCONTROL=erasedups  # ignore duplicate entries in history
-export HISTSIZE=10000         # Increases size of history
-export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
-shopt -s histappend   # Append history instead of overwriting
-shopt -s cdspell      # Correct minor spelling errors in cd command
-shopt -s dotglob      # includes dotfiles in pathname expansion
-shopt -s checkwinsize # If window size changes, redraw contents
-shopt -s cmdhist      # Multiline commands are a single command in history.
-shopt -s extglob      # Allows basic regexps in bash.
-shopt -s checkwinsize # update the values of lines and columns.
-#set ignoreeof on      # Typing EOF (CTRL+D) will not exit interactive sessions
-
 # Public Aliases
 # ------------------------------
 source "$DIR/bash_aliases"
@@ -147,9 +157,4 @@ source "$DIR/bash_functions"
 
 # Prompt
 # ------------------------------
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 source "$DIR/bash_prompt"
