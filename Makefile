@@ -18,12 +18,12 @@ install-osx: install-vim install-emacs install-bash-osx install-git
 install-vim:
 	rm -rf ~/.vim ~/.vim_runtime ~/.vimrc
 	ln -sfT `pwd`/vim ~/.vim_runtime
-	sh `pwd`/vim/install_awesome_vimrc.sh
+	sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 install-vim-basic:
-	rm -rf ~/.vim ~/.vimrc
-	ln -sfT `pwd`/vim ~/.vim
-	sh `pwd`/vim/install_basic_vimrc.sh
+	rm -rf ~/.vim ~/.vim_runtime ~/.vimrc
+	ln -sfT `pwd`/vim ~/.vim_runtime
+	sh ~/.vim_runtime/install_basic_vimrc.sh
 
 install-emacs:
 	rm -rf ~/.emacs.d
@@ -31,8 +31,7 @@ install-emacs:
 
 install-bash:
 	rm -f ~/.bashrc
-	ln -sfT `pwd`/bash/ ~/.bash.d
-	ln -sfT ~/.bash.d/bashrc ~/.bashrc
+	ln -sfT `pwd`/bash/bashrc ~/.bashrc
 
 install-bash-osx: install-bash
 	rm -f ~/.bash_profile
@@ -44,4 +43,5 @@ install-git:
 	ln -sfT ~/.git.d/gitconfig ~/.gitconfig
 
 install-scripts:
-	ln -sfT `pwd`/scripts/clean_yay_cache.py ~/.bin/clean_yay_cache.py
+	ln -sfT `pwd`/scripts/clean_aur_cache.py ~/.bin/clean_aur_cache.py
+	ln -sfT `pwd`/scripts/compare_dirs.py ~/.bin/compare_dirs.py

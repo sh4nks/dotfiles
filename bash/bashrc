@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Get the path to this directory (because we symlink all the files)
+# Ref: https://stackoverflow.com/a/246128/1236449
+# ------------------------------
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+
 # Platform detection
 # ------------------------------
 platform='unknown'
@@ -118,26 +130,26 @@ shopt -s checkwinsize # update the values of lines and columns.
 
 # Public Aliases
 # ------------------------------
-source ~/.bash.d/bash_aliases
+source "$DIR/bash_aliases"
 
 
 # Private Aliases
 # ------------------------------
-if [ -f ~/.bash.d/bash_alias_private ]; then
-    source ~/.bash.d/bash_alias_private
+if [ -f "$DIR/bash_alias_private" ]; then
+    source "$DIR/bash_alias_private"
 fi
 
 
 # Functions / Helpers
 # ------------------------------
-source ~/.bash.d/bash_functions
+source "$DIR/bash_functions"
 
 
 # Prompt
 # ------------------------------
-source ~/.bash.d/bash_prompt
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
+source "$DIR/bash_prompt"
