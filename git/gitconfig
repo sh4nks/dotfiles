@@ -81,6 +81,8 @@
 	fontdiff = Source Code Pro,11,-1,0,50,0,0,0,0,0
 	blameviewer = git gui blame
 	spellcheck = false
+	startupmode = folder
+	icontheme = dark
 [gui]
 	historybrowser = git-dag
 	editor = subl

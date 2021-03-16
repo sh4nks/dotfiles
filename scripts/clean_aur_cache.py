@@ -20,7 +20,7 @@ def log(msg):
 
 
 CACHE_DIR = os.path.expanduser("~/.cache/pikaur")
-FILE_ENDINGS = ".tar.gz .zip .deb .rpm .pkg.tar .tar.bz2".split()
+FILE_ENDINGS = ".tar.xz .tar.gz .zip .deb .rpm .pkg.tar .tar.bz2".split()
 EXCLUDED_DIRS = set([".git", "objects", "refs", "info", "hooks", "branches"])
 DRY_RUN = False
 
