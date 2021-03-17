@@ -41,6 +41,7 @@ install-git:
 	rm -f ~/.gitconfig
 	ln -sfT `pwd`/git ~/.git.d
 	ln -sfT ~/.git.d/gitconfig ~/.gitconfig
+	ln -sfT ~/.git.d/gitignore ~/.gitignore
 
 install-scripts:
 	ln -sfT `pwd`/scripts/clean_aur_cache.py ~/.bin/clean_aur_cache.py
