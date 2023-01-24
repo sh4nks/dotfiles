@@ -86,3 +86,5 @@
 [gui]
 	historybrowser = git-dag
 	editor = subl
+[init]
+	defaultBranch = master
