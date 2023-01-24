@@ -100,7 +100,7 @@ def get_files():
 
         if dir_size > 0:
             sum_fsize += dir_size
-            sum_f[root] = big_files
+            sum_f[root] = sorted(big_files)
             sum_f[root].append(dir_size)
 
     return sum_f, sum_fsize
