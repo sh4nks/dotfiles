@@ -1,0 +1,17 @@
+%YAML 1.2
+---
+name: Ngx TypeScript
+file_extensions:
+  - component.ts
+scope: source.ts.ngx
+contexts:
+  main:
+    - match: ""
+      push: scope:source.ts
+      with_prototype:
+      - match: '`'
+        push:
+          - meta_content_scope: text.html.basic.embedded.js
+          - include: 'scope:text.html.ngx'
+          - match: '`'
+            pop: true
