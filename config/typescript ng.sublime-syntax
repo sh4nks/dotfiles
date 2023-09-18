@@ -12,6 +12,13 @@ contexts:
       - match: '`'
         push:
           - meta_content_scope: text.html.basic.embedded.js
-          - include: 'scope:text.html.ngx'
           - match: '`'
             pop: true
+          - match: (?=.*<[a-zA-Z_])
+            embed: scope:text.html.basic
+            escape: (?=`)
+          - match: (?=.*\{\s*$)
+            embed: scope:source.css
+            escape: (?=`)
+          - match: '[^`]+'
+            scope: string.template.js
