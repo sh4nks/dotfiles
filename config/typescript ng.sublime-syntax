@@ -1,5 +1,6 @@
 %YAML 1.2
 ---
+# based on: https://forum.sublimetext.com/t/how-to-enable-css-highlighting-in-template-literal-strings/45264/6
 name: Ngx TypeScript
 file_extensions:
   - component.ts
