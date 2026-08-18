@@ -51,6 +51,7 @@ if [[ ${distribution} == "Arch Linux" ]]; then
     alias aursearch='pikaur -Ss'
     alias aurdevel='pikaur -Syu --devel'
     alias chrome='google-chrome-stable'
+    alias subm='/opt/sublime_merge/sublime_merge'
 
 elif [[ ${distribution} == "Debian GNU/Linux" ]]; then
     alias install='apt-get install'

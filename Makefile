@@ -39,12 +39,11 @@ install-bash-osx: install-bash
 
 install-git:
 	rm -f ~/.gitconfig
-	ln -sfT `pwd`/git ~/.git.d
-	ln -sfT ~/.git.d/gitconfig ~/.gitconfig
-	ln -sfT ~/.git.d/gitignore ~/.gitignore
+	ln -sfT `pwd`/gitconfig ~/.gitconfig
+	ln -sfT `pwd`/gitignore ~/.gitignore
 
 install-scripts:
-	ln -sfT `pwd`/scripts/clean_aur_cache.py ~/.bin/clean_aur_cache.py
-	ln -sfT `pwd`/scripts/compare_dirs.py ~/.bin/compare_dirs.py
-	ln -sfT `pwd`/scripts/pwcomp.py ~/.bin/pwcomp.py
-	ln -sfT `pwd`/scripts/checksize.sh ~/.bin/checksize.sh
+	ln -sfT `pwd`/scripts/clean_aur_cache.py ~/.local/bin/clean_aur_cache.py
+	ln -sfT `pwd`/scripts/compare_dirs.py ~/.local/bin/compare_dirs.py
+	ln -sfT `pwd`/scripts/pwcomp.py ~/.local/bin/pwcomp.py
+	ln -sfT `pwd`/scripts/checksize.sh ~/.local/bin/checksize.sh

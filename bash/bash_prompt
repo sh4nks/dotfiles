@@ -78,15 +78,15 @@ On_IWhite='\e[0;107m'   # White
 # check if the file exists, otherwise download it
 if [ -f /usr/share/git/completion/git-prompt.sh ]; then
     source /usr/share/git/completion/git-prompt.sh
-elif [ -f $HOME/.git.d/git-prompt.sh ]; then
-    source $HOME/.git.d/git-prompt.sh
+elif [ -f $HOME/.local/share/git.d/git-prompt.sh ]; then
+    source $HOME/.local/share/git.d/git-prompt.sh
 else
-    if [ ! -d $HOME/.git.d/ ]; then
-        mkdir -p $HOME/.git.d/
+    if [ ! -d $HOME/.local/share/git.d ]; then
+        mkdir -p $HOME/.local/share/git.d
     fi
     #wget https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -P $HOME/.git.d/
-    curl -o $HOME/.git.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-    source $HOME/.git.d/git-prompt.sh
+    curl -o $HOME/.local/share/git.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+    source $HOME/.local/share/git.d/git-prompt.sh
 fi
 # * for unstaged and + for staged changes
 #GIT_PS1_SHOWDIRTYSTATE=true
