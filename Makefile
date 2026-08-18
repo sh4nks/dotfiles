@@ -39,8 +39,8 @@ install-bash-osx: install-bash
 
 install-git:
 	rm -f ~/.gitconfig
-	ln -sfT `pwd`/gitconfig ~/.gitconfig
-	ln -sfT `pwd`/gitignore ~/.gitignore
+	ln -sfT `pwd`/git/gitconfig ~/.gitconfig
+	ln -sfT `pwd`/git/gitignore ~/.gitignore
 
 install-scripts:
 	ln -sfT `pwd`/scripts/clean_aur_cache.py ~/.local/bin/clean_aur_cache.py

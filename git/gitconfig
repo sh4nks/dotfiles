@@ -62,6 +62,7 @@
 	httpd=webrick
 [push]
 	default=current
+	autoSetupRemote = true
 [diff]
 	algorithm = patience
 [filter "lfs"]
@@ -87,4 +88,8 @@
 	historybrowser = git-dag
 	editor = subl
 [init]
-	defaultBranch = master
+	defaultBranch = main
+[url "https://invent.kde.org/"]
+	insteadOf = kde:
+[url "ssh://git@invent.kde.org/"]
+	pushInsteadOf = kde:
