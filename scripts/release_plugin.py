@@ -11,7 +11,7 @@ from pathlib import Path
 
 import tomllib
 
-WORKSPACE = Path(__file__).resolve().parent
+WORKSPACE = Path.cwd()
 TAG_PATTERN = re.compile(r"v\d+(\.\d+)*((a|b|rc)\d+)?(\.post\d+)?(\.dev\d+)?")
 CHANGELOG_NAMES = ("CHANGELOG.md", "CHANGES")
 CHANGELOG_HEADER = """\
@@ -439,7 +439,7 @@ def release(repo, dry_run):
 def main():
     parser = argparse.ArgumentParser(
         description="Bump, commit, tag and push releases of FlaskBB plugins "
-        "in this workspace."
+        "in the current directory."
     )
     parser.add_argument(
         "--dry-run",
