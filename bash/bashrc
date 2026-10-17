@@ -31,8 +31,9 @@ fi
 export STEAM_FRAME_FORCE_CLOSE=1    # Closes the steam frame instead of minimizing (steam is still running)
 #export STEAM_RUNTIME=0              # Uses system libraries to run steam (archlinux yeah \o/)
 export EDITOR='micro'
-export WORKON_HOME=~/local/share/virtualenvs
-export ANDROID_HOME=$HOME/local/share/android/sdk
+export WORKON_HOME=~/.local/share/virtualenvs
+export ANDROID_HOME=$HOME/.local/share/android/sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 export GOPATH=~/Development/Go
 export GO111MODULE=on
 export PATH="/usr/lib/ccache/bin/:$PATH" # include ccache's binaries before the path to your compiler

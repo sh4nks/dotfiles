@@ -47,4 +47,5 @@ install-scripts:
 	ln -sfT `pwd`/scripts/compare_dirs.py ~/.local/bin/compare_dirs.py
 	ln -sfT `pwd`/scripts/pwcomp.py ~/.local/bin/pwcomp.py
 	ln -sfT `pwd`/scripts/release_plugin.py ~/.local/bin/release_plugin.py
+	ln -sfT `pwd`/scripts/check_updates.py ~/.local/bin/check_updates.py
 	ln -sfT `pwd`/scripts/checksize.sh ~/.local/bin/checksize.sh
