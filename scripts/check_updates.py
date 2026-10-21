@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -147,6 +148,12 @@ def main() -> int:
         action="store_true",
         help="sort the dependencies in pyproject.toml alphabetically",
     )
+    parser.add_argument(
+        "-l",
+        "--lock",
+        action="store_true",
+        help="run uv lock -U in the directory of pyproject.toml afterwards",
+    )
     args = parser.parse_args()
 
     path = args.pyproject.resolve()
@@ -197,7 +204,8 @@ def main() -> int:
 
     if upgrades and args.upgrade:
         print(f"\nUpgraded {path}")
-        print("Run uv lock to update uv.lock.")
+        if not args.lock:
+            print("Run uv lock to update uv.lock.")
     elif upgrades:
         print(f"\nRun {sys.argv[0]} -u to upgrade {path.name}")
 
@@ -205,6 +213,11 @@ def main() -> int:
         print(f"\nSorted dependencies in {path}")
         for label in skipped:
             print(f"Skipped {label}: it contains comments")
+
+    if args.lock:
+        print(f"\nRunning uv lock -U in {path.parent}", flush=True)
+        if subprocess.run(["uv", "lock", "-U"], check=False, cwd=path.parent).returncode:
+            return 1
 
     print()
     return 1 if upgrades and not args.upgrade else 0
